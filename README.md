@@ -54,7 +54,7 @@ All resources support JSON Schema. Making a request to /api/<resource>/schema wi
 ## Searching
 All resources support a search parameter that filters the set of resources returned. This allows you to make queries like:
 
-https://127.0.0.1/singerapi/api/singers/?search=r2
+http://127.0.0.1/singerapi/api/singers/?search=r2
 
 All searches will use case-insensitive partial matches on the set of search fields. To see the set of search fields for each resource, check out the individual resource documentation. For more information on advanced search terms see here.
 
