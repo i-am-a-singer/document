@@ -13,10 +13,10 @@
 
 ​	Before type in our first eample, please ensure you have follow the installation instructions of SingerAPI api resource server and run server in local.
 
-​	Then, let's make our first API request to the I-AM-A-SINGER API!
+​	Then, let's make our first API request to the SingerAPI with [httpie](https://github.com/jakubroztocil/httpie/)!
 
 ```shell
-curl http://127.0.0.1:8080/singerapi/api/seasons
+http http://127.0.0.1:8080/singerapi/api/seasons/
 ```
 
 ​	Then you will get response that:
@@ -67,17 +67,16 @@ SWAPI provides two encodings for you to render the data with:
 JSON is the standard data format provided by SingerAPI by default.
 
 ## Resources
-Root
-The Root resource provides information on all available resources within the API.
+### API
+The API resource provides information on all available resources within the API.
 
-Example request:
+**Example request:**
 
 ```http
 http 127.0.0.1:8080/singerapi/api
 ```
 
-
-Example response:
+**Example response:**
 
 ```http
 
@@ -93,9 +92,228 @@ Content-Type: application/json
 
 ```
 
-Attributes:
+**Attributes:**
 
 - `seasons` string -- The URL root for Seasons resources
 - `singers` string -- The URL root for Singers resources
 - `albums` string -- The URL root for Albums resources
 - `songs` string -- The URL root for Songs resources
+
+
+
+### Seasons
+
+A Seasons resource is a specific *I Am a Singer* season.
+
+**Endpoints**
+
+- `/seasons/` -- get all the seasons resources
+- `/seasons/:id/` -- get a specific seasons resource
+
+**Example request:**
+
+```http
+http http://127.0.0.1:8080/singerapi/api/seasons/1/
+```
+
+**Example response:**
+
+```http
+
+HTTP/1.0 200 OK
+Content-Type: application/json
+{
+	"broadcast time": "January 18 – April 12, 2013",
+	"broadcaster": "Hunan Television",
+	"finals venue":"Hunan Broadcasting System",
+	"host(s)": "Hu Haiquan (Episode 1, 3-10, Repechage, Semifinal); Chen Yufan (Episode 2); Sha Baoliang, He Jiong, Wang Han (Final Round)",
+	"judges": "500 public audiences",
+	"runner-up": "http://127.0.0.1/singerapi/api/singers/2/",
+	"title": "I Am a Singer (season 1)",
+	"season": 1,
+	"singers": [
+        "http://127.0.0.1/singerapi/api/singers/1/",
+        "http://127.0.0.1/singerapi/api/singers/2/",
+        ....
+	],
+	"winner": "http://127.0.0.1/singerapi/api/singers/1/",
+	"url": "http://127.0.0.1/singerapi/api/seasons/1/"
+}
+
+```
+
+**Attributes:**
+
+- `broadcast time` string -- The broadcasts time of this season.
+- `broadcaster` string -- The broadcaster of this season.
+- `finals venue` string -- The finals venue of this season.
+- `host(s)` string -- The host(s) of this season.
+- `judges` string -- The judges of this season.
+- `runner-up` string -- The finals runner-up of this season.
+- `title` string -- The season title.
+- `season` int -- The season number.
+- `singers` array -- An array of URL of singers joined to this season.
+- `winner` string -- The finals winner of this season.
+- `url`: string -- The URL of this resource.
+
+**Search Fields:**
+
+- `title`
+
+<br>
+
+### Singers
+
+A Singer resource is a *I Am a Singer* participated singer.
+
+**Endpoints**
+
+- `/singers/` -- get all the singers resources
+- `/singers/:id/` -- get a specific singers resource
+
+**Example request:**
+
+```http
+http http://127.0.0.1:8080/singerapi/api/singers/1/
+```
+
+**Example response:**
+
+```http
+HTTP/1.0 200 OK
+Content-Type: application/json
+{
+	"albums": [
+		"http://127.0.0.1:8080/singerapi/api/albums/1/",
+		"http://127.0.0.1:8080/singerapi/api/albums/2/",
+		...
+	],
+	"introduce": "xxxxxxx",
+	"name": "xxx",
+	"songs":[
+		"http://127.0.0.1:8080/singerapi/api/songs/1/",
+		"http://127.0.0.1:8080/singerapi/api/songs/2/",
+		...
+	],
+	"url": "http://127.0.0.1/singerapi/api/albums/1/"
+}
+
+```
+
+**Attributes:**
+
+- `albums` array -- An array of  URL of the singer's contributed albums resource.
+- `introduce` string -- The singer introduce.
+- `name` string -- The singer name.
+- `songs` array -- An array of URL of the singer's contributed songs.
+- `url`: string -- The URL of this resource.
+
+**Search Fields:**
+
+- `name`
+
+<br>
+
+### Albums
+
+A Album resource is an album released by the singer joined in *I Am a Singer* .
+
+**Endpoints**
+
+- `/albums/` -- get all the albums resources
+- `/albums/:id/` -- get a specific albums resource
+
+**Example request:**
+
+```http
+http http://127.0.0.1:8080/singerapi/api/albums/1/
+```
+
+**Example response:**
+
+```http
+HTTP/1.0 200 OK
+Content-Type: application/json
+{
+	"introduce": "xxxxxxx",
+	“release date": "xxxx",
+	"published company": "xxx",
+	"singers": [
+		"http://127.0.0.1:8080/singerapi/api/singers/1/",
+		"http://127.0.0.1:8080/singerapi/api/singers/2/",
+		...
+	],
+	"songs":[
+		"http://127.0.0.1:8080/singerapi/api/songs/1/",
+		"http://127.0.0.1:8080/singerapi/api/songs/2/",
+		...
+	],
+	"title": "xxx",
+	"url": "http://127.0.0.1/singerapi/api/albums/1/"
+}
+
+```
+
+**Attributes:**
+
+- `introduce` string -- A brief introduce of the album.
+- `release date` string -- The publishing date of the album.
+- `published company` string -- The publishing company of the album.
+- `singers` array -- An array of URL of the singers who makes this album.
+- `songs` array -- An array of URL of the album's songs ocurred in *I Am a Singer*.
+- `title` string -- The title of the album.
+- `url`: string -- The URL of this resource.
+
+**Search Fields:**
+
+- `title`
+
+<br>
+
+### Songs
+
+A Song resource is a song played in *I Am a Singer* .
+
+**Endpoints**
+
+- `/songs/` -- get all the songs resources
+- `/songs/:id/` -- get a specific songs resource
+
+**Example request:**
+
+```http
+http http://127.0.0.1:8080/singerapi/api/songs/1/
+```
+
+**Example response:**
+
+```http
+HTTP/1.0 200 OK
+Content-Type: application/json
+{
+	"singers": [
+		"http://127.0.0.1:8080/singerapi/api/singers/1/",
+		"http://127.0.0.1:8080/singerapi/api/singers/2/",
+		...
+	],
+	"albums":[
+		"http://127.0.0.1:8080/singerapi/api/albums/1/",
+		"http://127.0.0.1:8080/singerapi/api/albums/2/",
+		...
+	],
+	"title": "xxx",
+	"url": "http://127.0.0.1/singerapi/api/songs/1/"
+}
+
+```
+
+**Attributes:**
+
+- `singers` array -- An array of URL of the songs singer ocurred in *I Am a Singer*.
+- `albums` array -- An array of URL of the albums that the song released in.
+- `title` string -- The title of the song.
+- `url`: string -- The URL of this resource.
+
+**Search Fields:**
+
+- `title`
