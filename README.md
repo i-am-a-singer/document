@@ -317,3 +317,7 @@ Content-Type: application/json
 **Search Fields:**
 
 - `title`
+
+
+
+> refs: https://swapi.co/documentation
