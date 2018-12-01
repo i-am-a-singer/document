@@ -132,9 +132,9 @@ Content-Type: application/json
 	"title": "I Am a Singer (season 1)",
 	"season": 1,
 	"singers": [
-        "http://127.0.0.1/singerapi/api/singers/1/",
-        "http://127.0.0.1/singerapi/api/singers/2/",
-        ....
+		"http://127.0.0.1/singerapi/api/singers/1/",
+		"http://127.0.0.1/singerapi/api/singers/2/",
+		....
 	],
 	"winner": "http://127.0.0.1/singerapi/api/singers/1/",
 	"url": "http://127.0.0.1/singerapi/api/seasons/1/"
@@ -236,7 +236,7 @@ HTTP/1.0 200 OK
 Content-Type: application/json
 {
 	"introduce": "xxxxxxx",
-	“release date": "xxxx",
+	"release date": "xxxx",
 	"published company": "xxx",
 	"singers": [
 		"http://127.0.0.1:8080/singerapi/api/singers/1/",
