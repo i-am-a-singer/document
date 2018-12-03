@@ -47,7 +47,7 @@ Swapi has rate limiting to prevent malicious abuse (as if anyone would abuse Sta
 Swapi is a completely open API. No authentication is required to query and get data. This also means that we've limited what you can do to just GET-ing the data. If you find a mistake in the data, then tweet the author or email him.
 
 JSON Schema
-All resources support JSON Schema. Making a request to /api/<resource>/schema will give you the details of that resource. This will allow you to programmatically inspect the attributes of that resource and their types.
+All resources support JSON Schema. Making a request to /api/resource/schema will give you the details of that resource. This will allow you to programmatically inspect the attributes of that resource and their types.
 
 
 
