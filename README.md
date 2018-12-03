@@ -47,7 +47,7 @@ Swapi has rate limiting to prevent malicious abuse (as if anyone would abuse Sta
 Swapi is a completely open API. No authentication is required to query and get data. This also means that we've limited what you can do to just GET-ing the data. If you find a mistake in the data, then tweet the author or email him.
 
 JSON Schema
-All resources support JSON Schema. Making a request to /api/<resource>/schema will give you the details of that resource. This will allow you to programmatically inspect the attributes of that resource and their types.
+All resources support JSON Schema. Making a request to /api/resource/schema will give you the details of that resource. This will allow you to programmatically inspect the attributes of that resource and their types.
 
 
 
@@ -126,12 +126,12 @@ HTTP/1.0 200 OK
 Content-Type: application/json
 {
 	"seasons" : {
-        "我是歌手第一季" : "http://127.0.0.1:8080/singerapi/api/seasons/1/",
-        "我是歌手第一季" : "http://127.0.0.1:8080/singerapi/api/seasons/2/",
-        "我是歌手第一季" : "http://127.0.0.1:8080/singerapi/api/seasons/3/",
-        "我是歌手第一季" : "http://127.0.0.1:8080/singerapi/api/seasons/4/",
-        "我是歌手第一季(歌手2017)" : "http://127.0.0.1:8080/singerapi/api/seasons/5/",
-        "我是歌手第一季(歌手2018)" : "http://127.0.0.1:8080/singerapi/api/seasons/6/"
+		"我是歌手第一季" : "http://127.0.0.1:8080/singerapi/api/seasons/1/",
+		"我是歌手第一季" : "http://127.0.0.1:8080/singerapi/api/seasons/2/",
+		"我是歌手第一季" : "http://127.0.0.1:8080/singerapi/api/seasons/3/",
+		"我是歌手第一季" : "http://127.0.0.1:8080/singerapi/api/seasons/4/",
+		"我是歌手第一季(歌手2017)" : "http://127.0.0.1:8080/singerapi/api/seasons/5/",
+		"我是歌手第一季(歌手2018)" : "http://127.0.0.1:8080/singerapi/api/seasons/6/"
 	}
 	"url" : "http://127.0.0.1/singerapi/api/seasons/"
 }
@@ -208,10 +208,10 @@ Content-Type: application/json
 {
 	"season" : "我是歌手第一季"
 	"singers" : {
-        "羽泉" : "http://127.0.0.1:8080/singerapi/api/singers/?singer=羽泉",
-    	"杨宗纬" : "http://127.0.0.1:8080/singerapi/api/singers/?singer=杨宗纬",
-    	"林志炫" : "http://127.0.0.1:8080/singerapi/api/singers/?singer=林志炫"
-    	...
+		"羽泉" : "http://127.0.0.1:8080/singerapi/api/singers/?singer=羽泉",
+		"杨宗纬" : "http://127.0.0.1:8080/singerapi/api/singers/?singer=杨宗纬",
+		"林志炫" : "http://127.0.0.1:8080/singerapi/api/singers/?singer=林志炫"
+		...
 	}
 	"url" : "http://127.0.0.1:8080/singerapi/api/seasons/1/singers/"
 }
@@ -247,10 +247,10 @@ Content-Type: application/json
 {
 	"season" : "我是歌手第一季",
 	"songs" : {
-        "浮夸" : "http://127.0.0.1:8080/singerapi/api/songs/?song=浮夸",
-    	"相见恨晚" : "http://127.0.0.1:8080/singerapi/api/songs/?song=相见恨晚",
-    	"往事随风" : "http://127.0.0.1:8080/singerapi/api/songs/?song=往事随风",
-    	...
+		"浮夸" : "http://127.0.0.1:8080/singerapi/api/songs/?song=浮夸",
+		"相见恨晚" : "http://127.0.0.1:8080/singerapi/api/songs/?song=相见恨晚",
+		"往事随风" : "http://127.0.0.1:8080/singerapi/api/songs/?song=往事随风",
+		...
 	}
 	"url" : "http://127.0.0.1:8080/singerapi/api/seasons/1/songs/"
 }
@@ -328,8 +328,8 @@ HTTP/1.0 200 OK
 Content-Type: application/json
 {
 	"song" : "夜夜夜夜",
-    "singer" : "林志炫",
-    "duration" : "05:00"
+	"singer" : "林志炫",
+	"duration" : "05:00"
 	"album" : "我是歌手第一季 第10期",
 	"season" : "我是歌手第一季"
 	"url" : "http://127.0.0.1/singerapi/api/songs/?song=夜夜夜夜"
