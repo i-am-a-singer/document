@@ -249,7 +249,7 @@ Content-Type: application/json
 	"songs" : {
         "浮夸" : "http://127.0.0.1:8080/singerapi/api/songs/?song=浮夸",
     	"相见恨晚" : "http://127.0.0.1:8080/singerapi/api/songs/?song=相见恨晚",
-    	"往事随风" : "http://127.0.0.1:8080/singerapi/api/songs/?song=往事随风"
+    	"往事随风" : "http://127.0.0.1:8080/singerapi/api/songs/?song=往事随风",
     	...
 	}
 	"url" : "http://127.0.0.1:8080/singerapi/api/seasons/1/songs/"
@@ -332,7 +332,7 @@ Content-Type: application/json
     "duration" : "05:00"
 	"album" : "我是歌手第一季 第10期",
 	"season" : "我是歌手第一季"
-	"url": "http://127.0.0.1/singerapi/api/songs/?song=夜夜夜夜"
+	"url" : "http://127.0.0.1/singerapi/api/songs/?song=夜夜夜夜"
 }
 
 ```
