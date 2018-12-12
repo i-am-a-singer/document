@@ -9,10 +9,9 @@ module.exports = {
         navbar: true,
         nav: [
             { text: 'Home', link: '/' },
+            { text: 'Documentation', link: '/documentation/' },
             { text: 'About', link: '/about/' },
-            { text: 'Documentation', link: '/documentation/'}
         ],
         sidebar: 'auto',
     },
-   
 }
