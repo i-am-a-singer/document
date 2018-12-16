@@ -7,10 +7,6 @@
 
 ## Getting started
 
-> TODO: complete installation instruction of api resource server. 
->
-> TODO: complete HTTP response result.
-
 ​	Before type in our first eample, please ensure you have follow the installation instructions of SingerAPI api resource server and run server in local.
 
 ​	Then, let's make our first API request to the SingerAPI with [httpie](https://github.com/jakubroztocil/httpie/)!
@@ -84,85 +80,40 @@ http 127.0.0.1:8080/singerapi/api
 HTTP/1.0 200 OK
 Content-Type: application/json
 {
-    "all seasons": "http://127.0.0.1/singerapi/api/seasons/",
-    "specific season": "http://127.0.0.1/singerapi/api/seasons/{id}/",
-    "singers in season": "http://127.0.0.1/singerapi/api/seasons/{id}/singers",
-    "songs in season": "http://127.0.0.1/singerapi/api/seasons/{id}/songs",
-    "specific singer": "http://127.0.0.1/singerapi/api/singers/?name={name}",
-    "specific song": "http://127.0.0.1/singerapi/api/songs/?name={name}"
+    "seasons": "http://127.0.0.1/singerapi/api/seasons/",
+    "singers": "http://127.0.0.1/singerapi/api/singers/",
+    "albums": "http://127.0.0.1/singerapi/api/albums/",
+    "songs": "http://127.0.0.1/singerapi/api/songs/"
 }
 
 ```
 
 **Attributes:**
 
-- `all seasons` string -- The URL root for all seasons resources
-- `specific seasons` string -- The URL root for specific season resources
-- `singers in seasons` string -- The URL root for all singers in specific season
-- `songs in seansons` string -- The URL root for all songs in specific season
-- `specific singer` string -- The URL root for specific singer resources
-- `specific song` string -- The URL root for specific song resources
+- `seasons` string -- The URL root for Seasons resources
+- `singers` string -- The URL root for Singers resources
+- `albums` string -- The URL root for Albums resources
+- `songs` string -- The URL root for Songs resources
 
-<br>
 
-### All seasons
 
-All URL to specific seasons in *I Am a Singer* .
-
-**Endpoints**
-
-- `/seasons/` -- get all the season resources
-
-**Example request:**
-
-```http
-http http://127.0.0.1:8080/singerapi/api/seasons/
-```
-
-**Example response:**
-
-```http
-HTTP/1.0 200 OK
-Content-Type: application/json
-{
-	"seasons" : {
-		"我是歌手第一季" : "http://127.0.0.1:8080/singerapi/api/seasons/1/",
-		"我是歌手第一季" : "http://127.0.0.1:8080/singerapi/api/seasons/2/",
-		"我是歌手第一季" : "http://127.0.0.1:8080/singerapi/api/seasons/3/",
-		"我是歌手第一季" : "http://127.0.0.1:8080/singerapi/api/seasons/4/",
-		"我是歌手第一季(歌手2017)" : "http://127.0.0.1:8080/singerapi/api/seasons/5/",
-		"我是歌手第一季(歌手2018)" : "http://127.0.0.1:8080/singerapi/api/seasons/6/"
-	}
-	"url" : "http://127.0.0.1/singerapi/api/seasons/"
-}
-```
-
-**Attributes:**
-
-- `seasons` json -- All seasons and corresponding URL in *I Am a Singer*. 
-- `url` string -- The URL of this resource.
-
-<br>
-
-### Specific season
+### Seasons
 
 A Seasons resource is a specific *I Am a Singer* season.
 
 **Endpoints**
 
-- `/seasons/{id}/` -- get a specific season resource
+- `/seasons/` -- get all the seasons resources
+- `/seasons/:id/` -- get a specific seasons resource
 
 **Example request:**
 
-```http
+```shell
 http http://127.0.0.1:8080/singerapi/api/seasons/1/
 ```
 
 **Example response:**
-
-```http
-HTTP/1.0 200 OK
-Content-Type: application/json
+```shell
 {
 	"title" : "我是歌手第一季",
 	"broadcast time" : "2013.1.18-2013.4.12",
@@ -186,96 +137,19 @@ Content-Type: application/json
 
 <br>
 
-### Singers in specific season
-
-All singers performed in specific season in *I Am a Singer* .
-
-**Endpoints**
-
-- `/seasons/{id}/singers/` -- get all singers contributed in specific season
-
-**Example request:**
-
-```http
-http http://127.0.0.1:8080/singerapi/api/seasons/1/singers/
-```
-
-**Example response:**
-
-```http
-HTTP/1.0 200 OK
-Content-Type: application/json
-{
-	"season" : "我是歌手第一季"
-	"singers" : {
-		"羽泉" : "http://127.0.0.1:8080/singerapi/api/singers/?singer=羽泉",
-		"杨宗纬" : "http://127.0.0.1:8080/singerapi/api/singers/?singer=杨宗纬",
-		"林志炫" : "http://127.0.0.1:8080/singerapi/api/singers/?singer=林志炫"
-		...
-	}
-	"url" : "http://127.0.0.1:8080/singerapi/api/seasons/1/singers/"
-}
-```
-
-**Attributes:**
-
-- `season` string -- The name of this season.
-- `singers` json -- All singers in thin season and corresponding URL.
-- `url` string -- The URL of this resource.
-
-<br>
-
-### Songs in specific season
-
-All songs performed in specific season in *I Am a Singer* .
-
-**Endpoints**
-
-- `/seasons/{id}/songs/` -- get all songs performed in specific season
-
-**Example request:**
-
-```http
-http http://127.0.0.1:8080/singerapi/api/seasons/1/songs/
-```
-
-**Example response:**
-
-```http
-HTTP/1.0 200 OK
-Content-Type: application/json
-{
-	"season" : "我是歌手第一季",
-	"songs" : {
-		"浮夸" : "http://127.0.0.1:8080/singerapi/api/songs/?song=浮夸",
-		"相见恨晚" : "http://127.0.0.1:8080/singerapi/api/songs/?song=相见恨晚",
-		"往事随风" : "http://127.0.0.1:8080/singerapi/api/songs/?song=往事随风",
-		...
-	}
-	"url" : "http://127.0.0.1:8080/singerapi/api/seasons/1/songs/"
-}
-```
-
-**Attributes:**
-
-- `season` string -- The name of this season.
-- `songs` json -- All songs performed in this season and correspongding URL.
-- `url` string -- The URL of this resource.
-
-<br>
-
-### Specific singer
+### Singers
 
 A Singer resource is a *I Am a Singer* participated singer.
 
 **Endpoints**
 
-- `/singers/?singer={name}` -- get a specific singers resource
+- `/singers/` -- get all the singers resources
+- `/singers/:id/` -- get a specific singers resource
 
 **Example request:**
 
 ```http
-http http://127.0.0.1:8080/singerapi/api/singers/?singer=张韶涵
+http http://127.0.0.1:8080/singerapi/api/singers/1/
 ```
 
 **Example response:**
@@ -301,24 +175,26 @@ Content-Type: application/json
 - `songs` json-- All singer's contributed songs and corresponding URL.
 - `url` string -- The URL of this resource.
 
+
 **Search Fields:**
 
-- `singer`
+- `name`
 
 <br>
 
-### Specific song
+### Albums
 
-A Song resource is a song performed in *I Am a Singer* .
+A Album resource is an album released by the singer joined in *I Am a Singer* .
 
 **Endpoints**
 
-- `/songs/?song={name}` -- get a specific songs resource
+- `/albums/` -- get all the albums resources
+- `/albums/:id/` -- get a specific albums resource
 
 **Example request:**
 
 ```http
-http http://127.0.0.1:8080/singerapi/api/songs/?song=夜夜夜夜
+http http://127.0.0.1:8080/singerapi/api/albums/1/
 ```
 
 **Example response:**
@@ -327,19 +203,75 @@ http http://127.0.0.1:8080/singerapi/api/songs/?song=夜夜夜夜
 HTTP/1.0 200 OK
 Content-Type: application/json
 {
-	"song" : "夜夜夜夜",
-	"singer" : "林志炫",
-	"duration" : "05:00"
-	"album" : "我是歌手第一季 第10期",
-	"season" : "我是歌手第一季"
-	"url" : "http://127.0.0.1/singerapi/api/songs/?song=夜夜夜夜"
+	"introduce": "xxxxxxx",
+	"release date": "xxxx",
+	"published company": "xxx",
+	"singers": [
+		"http://127.0.0.1:8080/singerapi/api/singers/1/",
+		"http://127.0.0.1:8080/singerapi/api/singers/2/",
+		...
+	],
+	"songs":[
+		"http://127.0.0.1:8080/singerapi/api/songs/1/",
+		"http://127.0.0.1:8080/singerapi/api/songs/2/",
+		...
+	],
+	"title": "xxx",
+	"url": "http://127.0.0.1/singerapi/api/albums/1/"
 }
 
 ```
 
 **Attributes:**
 
-- `song` string -- The name of the specific song
+- `introduce` string -- A brief introduce of the album.
+- `release date` string -- The publishing date of the album.
+- `published company` string -- The publishing company of the album.
+- `singers` array -- An array of URL of the singers who makes this album.
+- `songs` array -- An array of URL of the album's songs ocurred in *I Am a Singer*.
+- `title` string -- The title of the album.
+- `url`: string -- The URL of this resource.
+
+**Search Fields:**
+
+- `title`
+
+<br>
+
+### Songs
+
+A Song resource is a song played in *I Am a Singer* .
+
+**Endpoints**
+
+- `/songs/` -- get all the songs resources
+- `/songs/:id/` -- get a specific songs resource
+
+**Example request:**
+
+```http
+http http://127.0.0.1:8080/singerapi/api/songs/1/
+```
+
+**Example response:**
+
+```http
+HTTP/1.0 200 OK
+Content-Type: application/json
+{
+	"title" : "夜夜夜夜",
+	"singer" : "http://127.0.0.1:8080/singerapi/api/singers/2/",
+	"duration" : "05:00"
+	"album" : "我是歌手第一季 第10期",
+	"season" : "我是歌手第一季"
+	"url" : "http://127.0.0.1/singerapi/api/songs/1"
+}
+
+```
+
+**Attributes:**
+
+- `title` string -- The name of the specific song
 - `singer` string -- The name of singer who performed the song in *I Am a Singer*.
 - `duration` string -- The time of performing the song.
 - `album` string -- The name of the album which the song released in.
@@ -348,10 +280,8 @@ Content-Type: application/json
 
 **Search Fields:**
 
-- `song`
-
-<br>
+- `title`
 
 
 
-> refs: https://swapi.co/documentation
+> refs: [swapi](https://swapi.co/documentation)
